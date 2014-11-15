@@ -123,6 +123,11 @@ int unlink(const char *pathname);
 	valid errnos: EACCES EBUSY EFAULT EIO EISDIR ELOOP ENAMETOOLONG ENOENT \
 		ENOMEM ENOTDIR EPERM EROFS
 
+int mkdir(const char *pathname, mode_t mode);
+	on error: -1
+	valid errnos: EACCES EDQUOT EEXIST EFAULT ELOOP EMLINK ENAMETOOLONG \
+		ENOENT ENOMEM ENOSPC ENOSPC ENOTDIR EPERM EROFS
+
 int rename(const char *oldpath, const char *newpath);
 	on error: -1
 	valid errnos: EACCES EBUSY EFAULT EINVAL EISDIR ELOOP EMLINK ENAMETOOLONG \
