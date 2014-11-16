@@ -128,6 +128,16 @@ int mkdir(const char *pathname, mode_t mode);
 	valid errnos: EACCES EDQUOT EEXIST EFAULT ELOOP EMLINK ENAMETOOLONG \
 		ENOENT ENOMEM ENOSPC ENOSPC ENOTDIR EPERM EROFS
 
+int chmod(const char *pathname, mode_t mode);
+	on error: -1
+	valid errnos: CAP EACCES EBADF EFAULT EINVAL EIO ELOOP ENAMETOOLONG \
+		ENOENT ENOMEM ENOTDIR ENOTSUP EPERM EROFS
+
+int chown(const char *pathname, uid_t owner, gid_t group);
+	on error: -1
+	valid errnos: EACCES EBADF EFAULT EINVAL EIO ELOOP ENAMETOOLONG ENOENT \
+		ENOMEM ENOTDIR EPERM EROFS
+
 int rename(const char *oldpath, const char *newpath);
 	on error: -1
 	valid errnos: EACCES EBUSY EFAULT EINVAL EISDIR ELOOP EMLINK ENAMETOOLONG \
