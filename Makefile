@@ -61,11 +61,11 @@ test_clean:
 	$(MAKE) -C tests clean
 
 
-bindings: python2 python3
+bindings: python2 python3 lua
 
-bindings_install: python2_install python3_install
+bindings_install: python2_install python3_install lua_install
 
-bindings_clean: python_clean
+bindings_clean: python_clean lua_clean
 
 python2: libfiu
 	cd bindings/python && python setup.py build
@@ -82,6 +82,14 @@ python3_install: python3
 python_clean:
 	cd bindings/python && rm -rf build/
 
+lua: libfiu
+	cd bindings/lua && make
+
+lua_install: lua
+	cd bindings/lua && make install
+
+lua_clean:
+	cd bindings/lua && make clean
 
 clean: python_clean preload_clean libfiu_clean utils_clean test_clean
 
@@ -92,6 +100,6 @@ clean: python_clean preload_clean libfiu_clean utils_clean test_clean
 	bindings bindings_install bindings_clean \
 	preload preload_clean preload_install preload_uninstall \
 	utils utils_clean utils_install utils_uninstall \
-	test tests test_clean
+	test tests test_clean lua lua_install lua_clean
 
 
